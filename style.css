@@ -21,10 +21,6 @@ body {
     #05050a;
 }
 
-.hidden {
-  display: none !important;
-}
-
 .container {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
@@ -70,107 +66,6 @@ body {
 
 .site-nav a:hover {
   color: #ffffff;
-}
-
-/* Authentication Section */
-.auth-section {
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 2rem 0;
-}
-
-.auth-container {
-  max-width: 480px;
-}
-
-.auth-title {
-  margin: 0 0 1.6rem;
-  font-size: 1.5rem;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.auth-form {
-  display: grid;
-  gap: 1rem;
-}
-
-.auth-form .form-field {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.auth-form input {
-  width: 100%;
-  min-height: 3rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 0.95rem;
-  background: rgba(255, 255, 255, 0.04);
-  color: #ebedef;
-  font: inherit;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.auth-form input::placeholder {
-  color: #8f93a3;
-}
-
-.auth-form input:focus {
-  border-color: #8e98ff;
-  box-shadow: 0 0 0 4px rgba(142, 152, 255, 0.12);
-}
-
-.auth-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.2rem;
-}
-
-.auth-button {
-  flex: 1;
-  min-height: 3rem;
-}
-
-.auth-button.alt {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.16);
-}
-
-.auth-button.alt:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.24);
-}
-
-.auth-error {
-  color: #ff6b6b;
-  font-size: 0.9rem;
-  margin-top: 0.8rem;
-  min-height: 1.2rem;
-}
-
-.auth-success-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-
-.welcome-message {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #e1e4ed;
-}
-
-.welcome-message span {
-  color: #8e98ff;
-  font-weight: 600;
-}
-
-#logout-button {
-  white-space: nowrap;
-  min-width: 10rem;
 }
 
 .hero-section {
@@ -867,40 +762,4 @@ body {
   .importer-input-row input {
     width: 100%;
   }
-}
-/* Auth Layout additions */
-.button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.btn-secondary {
-    background-color: #4a5568;
-}
-
-.btn-secondary:hover {
-    background-color: #718096;
-}
-
-.btn-small {
-    padding: 5px 10px;
-    font-size: 0.85rem;
-    margin-left: 15px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.error-text {
-    color: #f56565;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-#logged-in-view {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
