@@ -21,6 +21,10 @@ body {
     #05050a;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .container {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
@@ -66,6 +70,107 @@ body {
 
 .site-nav a:hover {
   color: #ffffff;
+}
+
+/* Authentication Section */
+.auth-section {
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2rem 0;
+}
+
+.auth-container {
+  max-width: 480px;
+}
+
+.auth-title {
+  margin: 0 0 1.6rem;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-form .form-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.auth-form input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ebedef;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form input::placeholder {
+  color: #8f93a3;
+}
+
+.auth-form input:focus {
+  border-color: #8e98ff;
+  box-shadow: 0 0 0 4px rgba(142, 152, 255, 0.12);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.auth-button {
+  flex: 1;
+  min-height: 3rem;
+}
+
+.auth-button.alt {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.auth-button.alt:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.auth-error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  min-height: 1.2rem;
+}
+
+.auth-success-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.welcome-message {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #e1e4ed;
+}
+
+.welcome-message span {
+  color: #8e98ff;
+  font-weight: 600;
+}
+
+#logout-button {
+  white-space: nowrap;
+  min-width: 10rem;
 }
 
 .hero-section {
@@ -497,6 +602,105 @@ body {
 .build-card:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.14);
+}
+
+.build-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.build-card-title h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+  color: #ffffff;
+}
+
+.build-card-badges {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.class-badge,
+.platform-badge-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.class-badge {
+  background: rgba(142, 152, 255, 0.16);
+  color: #b3bdff;
+}
+
+.platform-badge-small {
+  background: rgba(255, 85, 172, 0.12);
+  color: #ff9ab5;
+}
+
+.delete-build-btn {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.6rem;
+  background: rgba(255, 85, 85, 0.1);
+  color: #ff9999;
+  font: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.delete-build-btn:hover {
+  background: rgba(255, 85, 85, 0.2);
+  border-color: rgba(255, 85, 85, 0.3);
+}
+
+.build-card-url {
+  color: #8e98ff;
+  font-size: 0.9rem;
+  word-break: break-all;
+  max-height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.build-card-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.launch-build-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.8rem;
+  background: rgba(142, 152, 255, 0.16);
+  color: #b3bdff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.launch-build-btn:hover {
+  background: rgba(142, 152, 255, 0.26);
+}
+
+.empty-builds-message {
+  text-align: center;
+  color: #9aa0b9;
+  padding: 2rem;
+  font-style: italic;
 }
 
 .build-card-header {

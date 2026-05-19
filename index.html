@@ -18,17 +18,52 @@
     </div>
   </header>
 
+  <!-- Authentication Section -->
+  <section id="auth-section" class="auth-section">
+    <div class="container">
+      <div class="auth-container">
+        <!-- Logged Out View -->
+        <div id="auth-form-view" class="auth-view">
+          <h2 class="auth-title">Log in to Your Account</h2>
+          <form class="auth-form" id="auth-form">
+            <div class="form-field">
+              <label class="input-label" for="auth-email">Email</label>
+              <input type="email" id="auth-email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-field">
+              <label class="input-label" for="auth-password">Password</label>
+              <input type="password" id="auth-password" placeholder="••••••••" required />
+            </div>
+            <div class="auth-buttons">
+              <button type="button" class="button auth-button" id="login-button">Login</button>
+              <button type="button" class="button auth-button alt" id="signup-button">Sign Up</button>
+            </div>
+            <div id="auth-error" class="auth-error"></div>
+          </form>
+        </div>
+
+        <!-- Logged In View -->
+        <div id="auth-success-view" class="auth-view hidden">
+          <div class="auth-success-content">
+            <p class="welcome-message">Welcome, <span id="user-email"></span></p>
+            <button type="button" class="button auth-button alt" id="logout-button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main>
     <section id="home" class="hero-section">
       <div class="container hero-inner">
         <p class="eyebrow">ARPG Build Hub</p>
-        <h1>NET AS BLESKOP PARAGON 300 IS MAG HY JOIN</h1>
+        <h1>Import & Track Live Diablo 4 and PoE2 Builds</h1>
         <p class="hero-text">Paste links from D4Builds, Mobalytics, or Maxroll to instantly parse builds and preview live ARPG setups.</p>
         <a href="#importer" class="button">Start Import</a>
       </div>
     </section>
 
-    <section id="importer" class="importer-section">
+    <section id="importer" class="importer-section hidden" data-requires-auth="true">
       <div class="container section-inner">
         <div class="section-heading">
           <span>Build Manager</span>
@@ -129,6 +164,12 @@
       </div>
     </section>
   </main>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+
   <script src="script.js" defer></script>
 </body>
 </html>
