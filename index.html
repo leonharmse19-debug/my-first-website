@@ -10,40 +10,18 @@
     <div class="container">
         <h1>ARPG Build Tracker</h1>
 
-        <div id="auth-section" class="card">
-            <div id="logged-out-view">
-                <h3>Login or Sign Up</h3>
-                <div class="input-group">
-                    <input type="email" id="auth-email" placeholder="Email Address">
-                    <input type="password" id="auth-password" placeholder="Password">
-                </div>
-                <div class="button-group">
-                    <button id="btn-login" class="btn">Login</button>
-                    <button id="btn-signup" class="btn btn-secondary">Sign Up</button>
-                </div>
-                <p id="auth-error" class="error-text"></p>
-            </div>
-            
-            <div id="logged-in-view" class="hidden">
-                <span id="user-display">Welcome!</span>
-                <button id="btn-logout" class="btn btn-small">Logout</button>
+        <div class="card">
+            <h3>Import New Build</h3>
+            <div class="input-group">
+                <input type="text" id="build-url" placeholder="Paste build planner URL here...">
+                <button id="btn-import" class="btn">Import Build</button>
             </div>
         </div>
 
-        <div id="main-tracker" class="hidden">
-            <div class="card">
-                <h3>Import New Build</h3>
-                <div class="input-group">
-                    <input type="text" id="build-url" placeholder="Paste build planner URL here...">
-                    <button id="btn-import" class="btn">Import Build</button>
-                </div>
+        <div class="builds-grid" id="builds-container">
             </div>
-
-            <div class="builds-grid" id="builds-container">
-                </div>
-        </div>
     </div>
 
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
