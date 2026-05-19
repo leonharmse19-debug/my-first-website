@@ -1,175 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARPG Build Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARPG Build Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#home" class="logo">ARPG Build Tracker</a>
-      <nav class="site-nav">
-        <a href="#home">Home</a>
-        <a href="#importer">Importer</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Authentication Section -->
-  <section id="auth-section" class="auth-section">
     <div class="container">
-      <div class="auth-container">
-        <!-- Logged Out View -->
-        <div id="auth-form-view" class="auth-view">
-          <h2 class="auth-title">Log in to Your Account</h2>
-          <form class="auth-form" id="auth-form">
-            <div class="form-field">
-              <label class="input-label" for="auth-email">Email</label>
-              <input type="email" id="auth-email" placeholder="you@example.com" required />
+        <h1>ARPG Build Tracker</h1>
+
+        <div id="auth-section" class="card">
+            <div id="logged-out-view">
+                <h3>Login or Sign Up</h3>
+                <div class="input-group">
+                    <input type="email" id="auth-email" placeholder="Email Address">
+                    <input type="password" id="auth-password" placeholder="Password">
+                </div>
+                <div class="button-group">
+                    <button id="btn-login" class="btn">Login</button>
+                    <button id="btn-signup" class="btn btn-secondary">Sign Up</button>
+                </div>
+                <p id="auth-error" class="error-text"></p>
             </div>
-            <div class="form-field">
-              <label class="input-label" for="auth-password">Password</label>
-              <input type="password" id="auth-password" placeholder="••••••••" required />
+            
+            <div id="logged-in-view" class="hidden">
+                <span id="user-display">Welcome!</span>
+                <button id="btn-logout" class="btn btn-small">Logout</button>
             </div>
-            <div class="auth-buttons">
-              <button type="button" class="button auth-button" id="login-button">Login</button>
-              <button type="button" class="button auth-button alt" id="signup-button">Sign Up</button>
-            </div>
-            <div id="auth-error" class="auth-error"></div>
-          </form>
         </div>
 
-        <!-- Logged In View -->
-        <div id="auth-success-view" class="auth-view hidden">
-          <div class="auth-success-content">
-            <p class="welcome-message">Welcome, <span id="user-email"></span></p>
-            <button type="button" class="button auth-button alt" id="logout-button">Logout</button>
-          </div>
+        <div id="main-tracker" class="hidden">
+            <div class="card">
+                <h3>Import New Build</h3>
+                <div class="input-group">
+                    <input type="text" id="build-url" placeholder="Paste build planner URL here...">
+                    <button id="btn-import" class="btn">Import Build</button>
+                </div>
+            </div>
+
+            <div class="builds-grid" id="builds-container">
+                </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <main>
-    <section id="home" class="hero-section">
-      <div class="container hero-inner">
-        <p class="eyebrow">ARPG Build Hub</p>
-        <h1>Import & Track Live Diablo 4 and PoE2 Builds</h1>
-        <p class="hero-text">Paste links from D4Builds, Mobalytics, or Maxroll to instantly parse builds and preview live ARPG setups.</p>
-        <a href="#importer" class="button">Start Import</a>
-      </div>
-    </section>
-
-    <section id="importer" class="importer-section hidden" data-requires-auth="true">
-      <div class="container section-inner">
-        <div class="section-heading">
-          <span>Build Manager</span>
-          <h2>Import and manage your saved ARPG builds.</h2>
-        </div>
-
-        <div class="importer-card">
-          <div class="input-form-group">
-            <div class="form-row">
-              <div class="form-field">
-                <label class="input-label" for="build-title-input">Build Title</label>
-                <input type="text" id="build-title-input" placeholder="e.g., Crit Barb Leveling" />
-              </div>
-              <div class="form-field">
-                <label class="input-label" for="build-class-select">Class</label>
-                <select id="build-class-select">
-                  <option value="">Select a class...</option>
-                  <option value="Sorcerer">Sorcerer</option>
-                  <option value="Barbarian">Barbarian</option>
-                  <option value="Druid">Druid</option>
-                  <option value="Necromancer">Necromancer</option>
-                  <option value="Rogue">Rogue</option>
-                  <option value="Spiritborn">Spiritborn</option>
-                  <option value="Warlock">Warlock</option>
-                  <option value="Paladin">Paladin</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row full-width">
-              <label class="input-label" for="build-link-input">Paste Build Link</label>
-              <div class="importer-input-row">
-                <input type="url" id="build-link-input" placeholder="https://d4builds.gg/... or maxroll.gg/... or mobalytics.gg/..." />
-                <button type="button" class="button action-button" id="import-build-button">Import Build</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="builds-grid-section">
-          <div class="builds-header">
-            <h3>Your Saved Builds</h3>
-            <p class="builds-count" id="builds-count">No builds saved yet.</p>
-          </div>
-          <div class="builds-grid" id="builds-grid">
-            <!-- Builds will be rendered here by JavaScript -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="about-section features-section">
-      <div class="container section-inner">
-        <div class="section-heading">
-          <span>Features</span>
-          <h2>Live PoE2 parsing and Diablo 4 build visualization in one hub.</h2>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <h3>Instant PoE2 Import</h3>
-            <p>Paste Path of Building codes or account names to parse passive trees, skill gems, and gear setups instantly.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Diablo 4 Planner Sync</h3>
-            <p>Fetch D4 build planner links and preview your character layout, skill choices, and recommended stats.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Live Build Previews</h3>
-            <p>View class details, key skills, and a clean visual summary as soon as the build is imported.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Feedback & Requests</h3>
-            <p>Send ideas directly through the contact form to shape future build tracking and planner features.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <div class="container section-inner">
-        <div class="section-heading">
-          <span>Contact</span>
-          <h2>Submit Feedback or Feature Requests</h2>
-        </div>
-        <form class="contact-form" action="#" method="post">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required />
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required />
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project" required></textarea>
-
-          <button type="submit" class="button">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
-
-  <script src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
