@@ -3,15 +3,47 @@ const buildsContainer = document.getElementById('builds-grid');
 const buildUrlInput = document.getElementById('build-link-input');
 const buildTitleInput = document.getElementById('build-title-input');
 const buildClassSelect = document.getElementById('build-class-select');
+const buildUserInput = document.getElementById('build-user-input');
+const btnSetUser = document.getElementById('set-user-button');
 const btnImport = document.getElementById('import-build-button');
 const buildsCountText = document.getElementById('builds-count');
+const currentUserDisplay = document.getElementById('current-user-display');
+
+function getCurrentUser() {
+    return localStorage.getItem('arpg-builds-user') || '';
+}
+
+function saveCurrentUser(user) {
+    localStorage.setItem('arpg-builds-user', user);
+}
+
+function getUserKey(user) {
+    return `arpg-builds-${user.replace(/[^a-zA-Z0-9_-]/g, '').toLowerCase()}`;
+}
+
+function updateUserDisplay() {
+    const user = getCurrentUser();
+    currentUserDisplay.textContent = user
+        ? `Current user: ${user}. Your builds are saved only in this browser under this name.`
+        : 'No user selected yet. Enter your name to save builds separately for each person.';
+    buildUserInput.value = user;
+}
 
 // Load builds from localStorage on startup
 function loadBuilds() {
-    const builds = JSON.parse(localStorage.getItem('arpg-builds') || '[]');
+    const user = getCurrentUser();
     buildsContainer.innerHTML = '';
 
-    buildsCountText.textContent = builds.length === 0 ? 'No builds saved yet.' : `${builds.length} saved build${builds.length === 1 ? '' : 's'}`;
+    if (!user) {
+        buildsCountText.textContent = 'Enter a name to view your builds.';
+        buildsContainer.innerHTML = `<p class="empty-builds-message">Please enter your name and click Set User before importing builds.</p>`;
+        return;
+    }
+
+    const builds = JSON.parse(localStorage.getItem(getUserKey(user)) || '[]');
+    buildsCountText.textContent = builds.length === 0
+        ? 'No builds saved yet for this user.'
+        : `${builds.length} saved build${builds.length === 1 ? '' : 's'} for ${user}`;
 
     if (builds.length === 0) {
         buildsContainer.innerHTML = `<p class="empty-builds-message">No builds saved yet. Import one above.</p>`;
@@ -50,7 +82,14 @@ function loadBuilds() {
 
 // Save a new build to localStorage
 function saveBuild(url) {
-    const builds = JSON.parse(localStorage.getItem('arpg-builds') || '[]');
+    const user = getCurrentUser();
+    if (!user) {
+        alert('Please enter your name and click Set User before saving a build.');
+        return;
+    }
+
+    const key = getUserKey(user);
+    const builds = JSON.parse(localStorage.getItem(key) || '[]');
 
     let platform = 'd4builds';
     if (url.includes('mobalytics')) platform = 'mobalytics';
@@ -77,17 +116,33 @@ function saveBuild(url) {
     };
 
     builds.unshift(newBuild);
-    localStorage.setItem('arpg-builds', JSON.stringify(builds));
+    localStorage.setItem(key, JSON.stringify(builds));
     loadBuilds();
 }
 
 // Delete a build from localStorage
 function deleteBuild(index) {
-    const builds = JSON.parse(localStorage.getItem('arpg-builds') || '[]');
+    const user = getCurrentUser();
+    if (!user) return;
+
+    const key = getUserKey(user);
+    const builds = JSON.parse(localStorage.getItem(key) || '[]');
     builds.splice(index, 1);
-    localStorage.setItem('arpg-builds', JSON.stringify(builds));
+    localStorage.setItem(key, JSON.stringify(builds));
     loadBuilds();
 }
+
+btnSetUser.addEventListener('click', () => {
+    const userName = buildUserInput.value.trim();
+    if (!userName) {
+        alert('Please enter a name to save builds for your own account.');
+        return;
+    }
+
+    saveCurrentUser(userName);
+    updateUserDisplay();
+    loadBuilds();
+});
 
 // Import button click handler
 btnImport.addEventListener('click', () => {
@@ -109,4 +164,5 @@ buildUrlInput.addEventListener('keypress', (e) => {
 });
 
 // Load builds on page load
+updateUserDisplay();
 loadBuilds();

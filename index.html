@@ -22,7 +22,7 @@
     <section id="home" class="hero-section">
       <div class="container hero-inner">
         <p class="eyebrow">ARPG Build Hub</p>
-        <h1>MARCO PRETORIUS</h1>
+        <h1>FAVOURITE BUILDS</h1>
         <p class="hero-text">Paste links from D4Builds, Mobalytics, or Maxroll to instantly parse builds and preview live ARPG setups.</p>
         <a href="#importer" class="button">Start Import</a>
       </div>
@@ -37,6 +37,16 @@
 
         <div class="importer-card">
           <div class="input-form-group">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="input-label" for="build-user-input">Your Name</label>
+                <div class="importer-input-row">
+                  <input type="text" id="build-user-input" placeholder="Enter your name" />
+                  <button type="button" class="button action-button" id="set-user-button">Set User</button>
+                </div>
+              </div>
+            </div>
+
             <div class="form-row">
               <div class="form-field">
                 <label class="input-label" for="build-title-input">Build Title</label>
@@ -65,6 +75,8 @@
                 <button type="button" class="button action-button" id="import-build-button">Import Build</button>
               </div>
             </div>
+
+            <p class="user-status" id="current-user-display">No user selected yet.</p>
           </div>
         </div>
 
